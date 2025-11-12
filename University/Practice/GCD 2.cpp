@@ -14,8 +14,17 @@ ll gcdModulo(ll a, ll b) {
     cout << "Steps: " << s << endl;
     return a;
 }
+
+ll gcdModuloRecursive(ll a, ll b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcdModuloRecursive(b, a % b);
+}
+
 int main() {
     ll a, b; cin >> a >> b;
-    gcdModulo(a, b);
+    cout << gcdModulo(a, b) << endl;
+    cout << gcdModuloRecursive(a, b);
 }
 
