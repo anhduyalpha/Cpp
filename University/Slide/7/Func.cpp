@@ -18,7 +18,7 @@ void inputArr(int *a, int &n) {
 
 }
 
-void exArr(int a[], const int &n) {
+void exArr(int *a, const int &n) { // int *a and int a[] is the same
     cout << "Arr included: ";
     for(int i = 0; i <= n - 1; i++) {
         cout << a[i] << " ";
