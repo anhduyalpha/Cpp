@@ -33,18 +33,12 @@ void inputArr(int *a, int &n, int &s, int &k) {
 }
 
 void countSpin(int *a, int n, int s, int k) {
-    int index = s, cnt = 0;
-    int b[maxindex];
+    long long index = s, sum = 0, cnt = 0;
     
     do {
-        b[cnt++] = a[index];
+        sum += a[index];
+        cnt++;
         index = (index + k) % n;
     } while(index != s);
-    
-    int sum = 0;
-    
-    for(int i = 0; i < cnt; i++) {
-        sum += b[i];
-    }
     cout << cnt << " " << sum;
 }
