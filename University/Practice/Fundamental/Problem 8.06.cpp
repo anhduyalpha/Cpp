@@ -6,60 +6,78 @@
 // - Thông báo “Chuoi rong.” nếu s rỗng
 // - Ngược lại, xuất ra màn hình chuỗi s đã đảo ngược các ký tự của mỗi tiếng
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string.h>
 using namespace std;
 #define MAX 300
 
-int myStrcmp(char *s1, char *s2);
-void myStrrev_word(char *s);
-int myStrlen(char *s);
+int myStrcmp(char s1[], char s2[]);
+int myStrlen(char s[], int k);
+void myStrcpy(char s[], int vt, char s1[], int k);
+void mySubstr(char s[], int b, int count, char ss[]);
+bool myStrcat(char s1[], char s2[]);
+void StringReverse(char st[]);
 
-int main() {
-    char s[MAX];
-    cin.getline(s, MAX);
-
-    if(myStrcmp(s, "") == 0) {
+int main()
+{
+	char s[MAX];
+	fgets(s, MAX, stdin);
+	if (myStrcmp(s, "") == 0)
 		cout << "Chuoi rong." << endl;
-    }
-    else {
-        myStrrev_word(s);
-    }
+	else
+	{
+		StringReverse(s);
+		cout << s << endl;
+	}
+	return 0;
 }
 
-int myStrlen(char *s) {
+int myStrlen(char s[], int k) {
     int i = 0;
-    while(s[i] != '\0') {
-        i++;
-    }
+    while(s[i] != '\0') i++;
     return i;
 }
 
-int myStrcmp(char *s1, char *s2) {
+int myStrcmp(char s1[], char s2[]) {
     int i = 0;
-    while(s1[i] != '\0' && s2[i] != '\0') {
-        if(s1[i] != s2[i])
-            return s1[i] - s2[i];   
+
+    while(1) {
+        char c1 = s1[i];
+        char c2 = s2[i];
+
+        if(c1 == '\n') c1 = '\0'; 
+        if(c2 == '\n') c2 = '\0';
+        
+        if(c1 != c2) return c1 - c2;
+        if(c1 == '\0') return 0;
         i++;
     }
-    return s1[i] - s2[i];
 }
 
-void myStrrev_word(char *s) {
-    int len = myStrlen(s);
+void StringReverse(char st[]) {
+    
+    int cnt = 0;
+    while(st[cnt] != '\0') {
+        if(st[cnt] == '\n') {
+            st[cnt] = '\0';
+            break;
+        }
+        cnt++;
+    }
+    
+    int len = myStrlen(st, 0);
     int start = 0;
-
+    
     for(int i = 0; i <= len; i++) {
-        if(s[i] == ' ' || s[i] == '\0') {
-
+        if(st[i] == ' ' || st[i] == '\0') {
             int left = start;
             int right = i - 1;
-
+            
             while(left < right) {
-                swap(s[left], s[right]);
+                swap(st[left], st[right]);
                 left++; right--;
             }
             start = i + 1;
         }
     }
-    cout << s;
 }
