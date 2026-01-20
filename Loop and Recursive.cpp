@@ -9,6 +9,8 @@ void Bai4(ll x, ll n);
 void Bai5(ll x, ll n);
 double Bai5_Dequy(ll x, ll n);
 void Bai6(ll x, ll n);
+void Bai7(ll x, ll n);
+void Bai8(ll x, ll n);
 
 int main() {
     long long x, n;
@@ -29,6 +31,10 @@ int main() {
     
     cout << endl;
     Bai6(x, n);
+    cout << endl;
+    Bai7(x, n);
+    cout << endl;
+    Bai8(x, n);
     
 }
 
@@ -97,6 +103,25 @@ void Bai6(ll x, ll n) {
     double dau = sqrt(1);
     for(int i = n - 1; i >= 0; i--) {
         s = sqrt((n - i) + s);
+    }
+    cout << s << endl;
+}
+
+void Bai7(ll x, ll n) {
+    double s = 0;
+    for(int i = 1; i <= n; i++) {
+        s = 1.0/(1.0 + s);
+    }
+    cout << s << endl;
+}
+
+void Bai8(ll x, ll n) {
+    long long s = 0;
+    long long current = 1;
+    
+    for(int i = 1; i <= n; i++) {
+        current = current*(2*i - 1);
+        s += current;   
     }
     cout << s << endl;
 }
