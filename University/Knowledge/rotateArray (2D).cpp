@@ -37,12 +37,15 @@ void rotate_1() {
     cout << endl;
     cout << "==========================================================" << endl;
 
+    delete[] a;
 }
 
 void rotate_n() {
     int size, times; cout << "Enter the number of num you want to rotate: "; cin >> size;
     cout << "Enter the rep you want to make: "; cin >> times;
     cout << "Enter " << size << " number seprate by a space: " << endl;
+
+    times %= size;
 
     int *a = new int[size];
     for(int i = 0; i < size; i++) cin >> a[i];
@@ -55,4 +58,5 @@ void rotate_n() {
     cout << endl;
     cout << "==========================================================" << endl;
 
+    delete[] a;
 }
